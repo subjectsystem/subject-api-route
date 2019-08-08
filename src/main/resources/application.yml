@@ -1,0 +1,68 @@
+# Spring boot application
+spring:
+  application:
+    name: subject-api-route-consumer
+server:
+  port: 8600
+
+# MyBatis Config properties
+
+# Services Versions
+services:
+  ports:
+    course: 8601
+    user: 8602
+  versions:
+    course:
+      v1: 1.0.0
+    user:
+      v1: 1.0.0
+
+
+# Dubbo Config properties
+#dubbo:
+#  ## Base packages to scan Dubbo Component：@com.alibaba.dubbo.config.annotation.Service
+#  scan:
+#    basePackages: com.miyako.subject.service.course.provider.api.impl
+#  ## ApplicationConfig Bean
+#  application:
+#    id: subject-service-course-provider
+#    name: subject-service-course-provider
+#    qos-port: 22222
+#    qos-enable: true
+#  ## ProtocolConfig Bean
+#  protocol:
+#    id: dubbo
+#    name: dubbo
+#    port: 20881
+#    status: server
+#    serialization: kryo
+#  ## RegistryConfig Bean
+#  registry:
+#    id: zookeeper
+#    address: zookeeper://127.0.0.1:2181
+##    address: zookeeper://192.168.10.131:2181?backup=192.168.10.131:2182,192.168.10.131:2183
+#
+## Enables Dubbo All Endpoints
+#management:
+#  endpoint:
+#    dubbo:
+#      enabled: true
+#    dubbo-shutdown:
+#      enabled: true
+#    dubbo-configs:
+#      enabled: true
+#    dubbo-services:
+#      enabled: true
+#    dubbo-references:
+#      enabled: true
+#    dubbo-properties:
+#      enabled: true
+#  # Dubbo Health
+#  health:
+#    dubbo:
+#      status:
+#        ## StatusChecker Name defaults (default : "memory", "load" )
+#        defaults: memory
+#        ## StatusChecker Name extras (default : empty )
+#        extras: load,threadpool
