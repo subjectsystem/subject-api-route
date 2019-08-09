@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.context.annotation.ImportResource;
@@ -18,7 +19,7 @@ import org.springframework.context.annotation.ImportResource;
 @EnableHystrix
 @EnableHystrixDashboard
 @ImportResource(value = {"classpath:route-consumer.xml"})
-@SpringBootApplication(scanBasePackages = "com.miyako.subject")
+@SpringBootApplication(scanBasePackages = "com.miyako.subject", exclude = DataSourceAutoConfiguration.class)
 public class SubjectApiRouteConsumerApplication{
 
     private static Logger logger = LoggerFactory.getLogger(SubjectApiRouteConsumerApplication.class);

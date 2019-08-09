@@ -2,10 +2,21 @@
 spring:
   application:
     name: subject-api-route-consumer
+  mvc:
+    static-path-pattern: /**
+
+  thymeleaf:
+    servlet:
+      content-type: text/html
+    enabled: true
+    encoding: UTF-8
+    mode: HTML5
+    suffix: .html
+#    prefix: classpath:/templates/
+    cache: false
 server:
   port: 8600
 
-# MyBatis Config properties
 
 # Services Versions
 services:
@@ -17,6 +28,12 @@ services:
       v1: 1.0.0
     user:
       v1: 1.0.0
+
+#endpoints:
+#  web:
+#    exposure:
+#      include: "*"
+
 
 
 # Dubbo Config properties

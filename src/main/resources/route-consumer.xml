@@ -12,6 +12,7 @@
     <dubbo:registry protocol="zookeeper"  address="zookeeper://127.0.0.1:2181"/>
 
     <dubbo:annotation package="com.miyako.subject.service.user.consumer.route"/>
+    <dubbo:annotation package="com.miyako.subject.service.user.api"/>
 
     <dubbo:annotation package="com.miyako.subject.service.course.consumer.route"/>
 
