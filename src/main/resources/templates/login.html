@@ -9,7 +9,7 @@
     <title>登陆</title>
 </head>
 <body>
-<form id="signupForm" class="form-horizontal" ><!-- action="" -->
+<form id="signupForm" method="post" class="form-horizontal" th:action="@{/login}" onsubmit="return login()" ><!-- action="" -->
     <div class="form-group row">
         <label class="col-sm-4 col-form-label" for="studentnum">用户名</label>
         <div class="col-sm-6">
@@ -24,7 +24,7 @@
     </div>
     <div class="form-group row">
         <div class="col-sm-9 offset-sm-4">
-            <button type="button" class="btn btn-primary" name="signup" onclick="login()" value="Sign up">Sign up</button>
+            <button type="submit" class="btn btn-primary" name="signup" value="Sign up">Sign up</button>
         </div>
     </div>
 </form>
@@ -33,15 +33,8 @@
     function login() {
         let pwd = $("#password").val();
         let hex = $.md5(pwd);
-        console.log(hex);
-        $.ajax( {
-            url: "/login",
-            type: "POST",
-            data: {
-                "studentnum": $("#studentnum").val(),
-                "password": hex,
-            }
-        });
+        $("#password").val(hex);
+        return true;
     }
 </script>
 </html>
