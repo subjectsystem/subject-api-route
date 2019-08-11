@@ -61,6 +61,27 @@ public class LoginController{
        }
     }
 
+    @PostMapping("/logintest")
+    @MethodLog(value = "LoginController", operationType = "路径访问", operationName = "login",operationArgs = "用户名和密码")
+    public String loginTest(String studentnum, String password, HttpServletResponse response){
+        logger.info(studentnum+"->"+password);
+        TbStudent student = new TbStudent();
+        student.setName(studentnum);
+        student.setPassword(password);
+        TbStudent one = studentSetvice.selectOne(student);
+        if(one == null){
+            logger.info("student no exist...");
+            return "redirect:login";
+        }else{
+            logger.info("student set cache...");
+            // 生成登陆token
+            String token = UUID.randomUUID().toString().replace("-", "");//去掉原生的"-"
+            //将token写入redis缓存
+            addCookie(one,token,response);
+            return "redirect:welcome";
+        }
+    }
+
     @MethodLog(value = "LoginController", operationType = "添加cookie", operationName = "addCookie",operationArgs = "用户和token")
     public void addCookie(TbStudent user, String token, HttpServletResponse response){
         // 设置登陆token进缓存
